@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f2ef">
+  <title>Kamila &amp; Everton | Nosso casamento</title>
+  <meta name="description" content="Convite de casamento de Kamila e Everton: 30 de janeiro de 2027, às 14h, no Sítio Espaço Gomes, em Suzano-SP.">
+
+  <!-- Pré-visualização ao compartilhar no WhatsApp/Instagram.
+       Depois de publicar o site, troque o caminho abaixo pelo endereço completo, ex.: https://seusite.com.br/assets/og-convite.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kamila &amp; EWerton | Com muito amor, vamos nos casar!">
+  <meta property="og:description" content="30 de janeiro de 2027, às 14h. Contamos com a sua presença!">
+  <meta property="og:image" content="assets/og-convite.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23f4f2ef'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='%23b99a61'%3EK%26E%3C/text%3E%3C/svg%3E">
+
+  <!-- Fontes hospedadas junto com o site (pasta fonts/): funcionam mesmo sem internet. -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Marca que o JavaScript está ativo (evita esconder conteúdo se ele falhar). -->
+  <script>
+    document.documentElement.classList.add('js');
+    /* Abertura com envelope: só quando o site abre do início (sem #âncora na URL). */
+    (function () {
+      var hash = location.hash;
+      if (hash && hash !== '#inicio') return;
+      var el = document.documentElement;
+      el.classList.add('has-intro', 'cover-hold');
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+      setTimeout(function () { el.classList.remove('has-intro', 'cover-hold'); }, 15000); /* segurança */
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ============ ABERTURA · ENVELOPE (aparece sempre que a página é aberta ou atualizada) ============ -->
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Convite de casamento de Kamila e Ewerton">
+    <div class="intro__stage">
+      <div class="envelope">
+        <div class="envelope__back"></div>
+
+        <div class="envelope__card" aria-hidden="true">
+          <img class="envelope__leaf envelope__leaf--l" src="assets/folhagem-esq.webp" alt="" width="800" height="490">
+          <img class="envelope__leaf envelope__leaf--r" src="assets/folhagem-dir.webp" alt="" width="802" height="500">
+          <div class="envelope__card-text">
+            <p class="envelope__lead">Com muito amor,<br>vamos nos casar!</p>
+            <p class="envelope__names">Kamila &amp; Ewerton</p>
+            <p class="envelope__date">30 de janeiro de 2027</p>
+          </div>
+        </div>
+
+        <div class="envelope__front">
+          <svg class="envelope__lines" viewBox="0 0 100 64" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 64 50 34.6 100 64M0 0 50 34.6 100 0" fill="none" stroke="rgba(134,105,58,.28)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <p class="envelope__to">Convite de casamento</p>
+        </div>
+
+        <div class="envelope__flap" aria-hidden="true">
+          <div class="flap__face flap__face--out"></div>
+          <div class="flap__face flap__face--in"></div>
+        </div>
+
+        <button type="button" class="envelope__seal" aria-label="Abrir o convite">
+          <img src="assets/monograma.webp" alt="" width="300" height="260">
+        </button>
+      </div>
+    </div>
+    <button type="button" class="intro__skip">Pular</button>
+  </div>
+  <a class="skip-link" href="#presentes">Ir para os detalhes</a>
+
+  <main>
+    <!-- ============ PÁGINA 1 · CAPA (ocupa a tela inteira) ============ -->
+    <section class="page cover" id="inicio" aria-labelledby="nomes">
+      <img class="cover__foliage cover__foliage--left" src="assets/folhagem-esq.webp" alt="" width="800" height="490" fetchpriority="high">
+      <img class="cover__foliage cover__foliage--right" src="assets/folhagem-dir.webp" alt="" width="802" height="500" fetchpriority="high">
+      <img class="cover__landscape" src="assets/paisagem.webp" alt="" width="1672" height="300" fetchpriority="high">
+
+      <div class="cover__content">
+        <p class="cover__lead">Com muito amor,<br>vamos nos casar!</p>
+        <img class="cover__monogram" src="assets/monograma.webp" alt="Monograma com as letras K e E" width="300" height="260">
+        <h1 class="cover__names" id="nomes">Kamila <span class="amp">&amp;</span> Ewerton</h1>
+        <p class="cover__invite">Contamos com a sua presença!</p>
+        <svg class="cover__heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21 2.9 11.9A5.6 5.6 0 0 1 12 4.7a5.6 5.6 0 0 1 9.1 7.2Z" fill="currentColor"/></svg>
+        <p class="cover__date">30 de janeiro de 2027</p>
+      </div>
+
+      <a class="cover__cue" href="#presentes" aria-label="Rolar para ver a lista de presentes e mais informações">
+        <span>Ver detalhes</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+    <!-- ============ PÁGINA 2 · LISTA DE PRESENTES ============ -->
+    <section class="page gifts" id="presentes" aria-labelledby="gifts-title">
+      <img class="gifts__lily gifts__lily--left" src="assets/lirios-azuis.webp" alt="" aria-hidden="true" loading="lazy" width="408" height="612">
+      <img class="gifts__lily gifts__lily--right" src="assets/lirios-amarelos.webp" alt="" aria-hidden="true" loading="lazy" width="408" height="612">
+
+      <div class="gifts__inner reveal">
+        <img class="gifts__monogram" src="assets/monograma.webp" alt="" aria-hidden="true" loading="lazy" width="300" height="260">
+        <p class="kicker">Um carinho para nossa nova etapa</p>
+        <h2 id="gifts-title">Lista de presentes</h2>
+        <div class="rule" aria-hidden="true"></div>
+        <p>A presença de vocês já será um presente enorme para nós! Se também quiserem nos presentear, preparamos uma lista com muito carinho para essa nova fase da nossa história.</p>
+        <p>Obrigado por fazerem parte desse capítulo tão especial. Que Deus abençoe cada um de vocês!</p>
+
+        <!-- O link do botão é definido no topo do arquivo script.js (GIFT_LIST_URL). -->
+        <a class="btn btn--gift" id="gift-link" href="https://SEU-LINK-DA-LISTA-AQUI.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16v9H4zM3 7.5h18V11H3zM12 7.5V20M12 7.5C10.6 4 7 4.2 7 6.1c0 1.4 2.3 1.4 5 1.4Zm0 0c1.4-3.5 5-3.3 5-1.4 0 1.4-2.3 1.4-5 1.4Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <span>Envie seu presente</span>
+        </a>
+      </div>
+    </section>
+    <!-- ============ PÁGINA 3 · TRAJE ============ -->
+    <section class="page dress" id="traje" aria-labelledby="dress-title">
+      <div class="dress__layout reveal">
+        <div class="dress__art">
+          <!-- Carrossel de sugestões de look. As fotos ficam em assets/roupas (look-1 … look-5). -->
+          <div class="carousel" id="looks" role="region" aria-roledescription="carrossel" aria-label="Sugestões de looks esporte fino">
+            <div class="carousel__viewport">
+              <div class="carousel__track" aria-live="off">
+              <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Look 1 de 5">
+                <img src="assets/roupas/look-1.webp" alt="Casal de esporte fino: vestido longo amarelo em camadas e camisa branca com calça bege" width="960" height="1200" loading="lazy" draggable="false">
+              </div>
+              <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Look 2 de 5">
+                <img src="assets/roupas/look-2.webp" alt="Casal de esporte fino: vestido longo azul-marinho e camisa azul-marinho com calça bege" width="960" height="1200" loading="lazy" draggable="false">
+              </div>
+              <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Look 3 de 5">
+                <img src="assets/roupas/look-3.webp" alt="Casal de esporte fino: camisa branca com calça bege e vestido laranja de um ombro só" width="960" height="1200" loading="lazy" draggable="false">
+              </div>
+              <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Look 4 de 5">
+                <img src="assets/roupas/look-4.webp" alt="Casal de esporte fino: vestido lilás com babados e camisa polo branca com calça bege" width="960" height="1200" loading="lazy" draggable="false">
+              </div>
+              <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Look 5 de 5">
+                <img src="assets/roupas/look-5.webp" alt="Casal de esporte fino: vestido longo pink em camadas e camisa branca com calça cinza" width="960" height="1200" loading="lazy" draggable="false">
+              </div>
+              </div>
+            </div>
+
+            <button type="button" class="carousel__btn carousel__btn--prev" aria-label="Look anterior">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="carousel__btn carousel__btn--next" aria-label="Próximo look">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <div class="carousel__footer">
+            <button type="button" class="carousel__dot" aria-label="Ver look 1"></button>
+            <button type="button" class="carousel__dot" aria-label="Ver look 2"></button>
+            <button type="button" class="carousel__dot" aria-label="Ver look 3"></button>
+            <button type="button" class="carousel__dot" aria-label="Ver look 4"></button>
+            <button type="button" class="carousel__dot" aria-label="Ver look 5"></button>
+              <button type="button" class="carousel__pause" aria-label="Pausar passagem automática" aria-pressed="false">
+                <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5Z" fill="currentColor"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dress__copy">
+          <p class="kicker">Um toque de cor para o nosso dia</p>
+          <h2 id="dress-title">Como se vestir?</h2>
+          <p class="dress__code">Traje esporte fino</p>
+          <div class="rule rule--left" aria-hidden="true"></div>
+
+          <blockquote class="dress__verse">
+            <p>“Por que vocês se preocupam com roupas? Vejam como crescem os lírios do campo. Eles não trabalham nem tecem. Contudo, digo a vocês que nem Salomão, em todo o seu esplendor, vestiu‑se como um deles. Se Deus veste assim a erva do campo, que hoje existe e amanhã é lançada no fogo, não vestirá muito mais a vocês, homens de pequena fé?”</p>
+            <footer>Mateus 6:28–30</footer>
+          </blockquote>
+
+          <p>Deus coloriu a criação com uma beleza que não precisa competir com nada. Por isso, queremos convidar vocês a <strong>usar e abusar das cores que o próprio Deus criou!</strong> Sintam-se à vontade para escolher tons alegres, delicados ou vibrantes e montar um look que tenha a sua personalidade.</p>
+          <p>Escolha seu esporte fino com carinho e venha celebrar esse dia tão especial com a gente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PÁGINA 4 · DATA, LOCAL E CONFIRMAÇÃO DE PRESENÇA ============ -->
+    <section class="page when" id="data" aria-labelledby="when-title">
+      <img class="when__foliage when__foliage--left" src="assets/folhagem-esq.webp" alt="" aria-hidden="true" loading="lazy" width="800" height="490">
+      <img class="when__foliage when__foliage--right" src="assets/folhagem-dir.webp" alt="" aria-hidden="true" loading="lazy" width="802" height="500">
+
+      <div class="when__inner reveal">
+        <p class="kicker">Salve a data</p>
+        <h2 id="when-title" class="when__date">
+          <span class="when__weekday">Sábado</span>
+          30 de janeiro de 2027
+          <span class="when__time">às 14h</span>
+        </h2>
+
+        <div class="countdown" id="countdown" role="group" aria-label="Contagem regressiva para o casamento">
+          <div class="countdown__unit"><span class="countdown__num" id="cd-days" aria-hidden="true">--</span><span class="countdown__label">dias</span></div>
+          <div class="countdown__unit"><span class="countdown__num" id="cd-hours" aria-hidden="true">--</span><span class="countdown__label">horas</span></div>
+          <div class="countdown__unit"><span class="countdown__num" id="cd-mins" aria-hidden="true">--</span><span class="countdown__label">minutos</span></div>
+          <div class="countdown__unit"><span class="countdown__num" id="cd-secs" aria-hidden="true">--</span><span class="countdown__label">segundos</span></div>
+        </div>
+        <p class="countdown__done" id="countdown-done" hidden></p>
+        <p class="sr-only" id="countdown-sr" aria-live="polite"></p>
+
+        <div class="rule" aria-hidden="true"></div>
+
+        <h3 class="where__title">Onde será?</h3>
+        <p class="where__name">Sítio Espaço Gomes</p>
+        <p class="where__city">Suzano, SP</p>
+        <p class="note">Confira o endereço completo no segundo convite que será enviado com 30 dias de antecedência.</p>
+        <div class="rule" aria-hidden="true"></div>
+
+        <h3 class="where__title">Confirmação de presença</h3>
+        <!-- O link do botão é definido no topo do arquivo script.js (RSVP_URL). -->
+        <a class="btn btn--gift" id="rsvp-link" href="https://SEU-LINK-DE-CONFIRMACAO-AQUI.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5h18v12H3zM3.5 7.2l8.5 6.3 8.5-6.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <span>Confirme sua presença</span>
+        </a>
+      </div>
+
+      <footer class="site-footer">Com muito amor, <span class="script">Kamila &amp; Ewerton</span> · 2027</footer>
+    </section>
+
+  </main>
+
+  <nav class="page-dots" aria-label="Navegação entre as seções">
+    <a href="#inicio" class="dot is-active" aria-label="Capa" aria-current="true"></a>
+    <a href="#presentes" class="dot" aria-label="Lista de presentes"></a>
+    <a href="#traje" class="dot" aria-label="Como se vestir"></a>
+    <a href="#data" class="dot" aria-label="Data, local e confirmação de presença"></a>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
