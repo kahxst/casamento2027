@@ -1,0 +1,218 @@
+/* =========================================================
+   Formulário de confirmação · Kamila & Ewerton
+   Branco e dourado, bem limpo. Cores e fontes ficam em ":root".
+   ========================================================= */
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/cormorant-garamond-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 500; font-display: swap; src: url("fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); }
+@font-face { font-family: "Great Vibes"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/great-vibes-latin-400-normal.woff2") format("woff2"); }
+
+:root {
+  --white: #ffffff;
+  --ink: #4f4d42;
+  --muted: #7a7464;
+  --gold: #b99a61;          /* detalhes */
+  --gold-deep: #86693a;     /* textos e botão (bom contraste no branco) */
+  --gold-soft: rgba(185, 154, 97, .45);
+  --error: #9b4a3c;
+
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --script: "Great Vibes", "Snell Roundhand", cursive;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh; min-height: 100svh;
+  color: var(--ink);
+  background: var(--white);
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+/* filete dourado fino contornando a tela, como num papel de convite */
+body::before {
+  content: ""; position: fixed; inset: clamp(.6rem, 1.6vw, 1.25rem); z-index: 0; pointer-events: none;
+  border: 1px solid var(--gold-soft);
+}
+h1, h2, p { margin: 0; }
+img { display: block; max-width: 100%; height: auto; }
+:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 4px; }
+
+/* ---------- página ---------- */
+.page {
+  position: relative; z-index: 1;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: clamp(2.5rem, 7vh, 4.5rem) 1.5rem clamp(2.5rem, 7vh, 4rem);
+}
+.mono {
+  width: clamp(9.5rem, 24vh, 14rem); height: auto;
+  animation: fade-up 1s cubic-bezier(.2, .7, .2, 1) both;
+}
+.title {
+  margin-top: .4rem;
+  font-family: var(--script); font-weight: 400;
+  font-size: clamp(2.4rem, 7vw, 3.4rem); line-height: 1.2;
+  color: var(--gold-deep); text-align: center;
+  animation: fade-up 1s cubic-bezier(.2, .7, .2, 1) .15s both;
+}
+.rule {
+  width: 5.25rem; height: 1px; margin: 1.1rem auto 2.2rem;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: fade-up 1s ease .25s both;
+}
+
+/* ---------- formulário ---------- */
+.form { width: min(100%, 26rem); animation: fade-up 1s cubic-bezier(.2, .7, .2, 1) .35s both; }
+.field { margin: 0 0 1.9rem; padding: 0; border: 0; min-width: 0; }
+.label { display: block; padding: 0; margin-bottom: .35rem; font-style: italic; font-size: 1.15rem; color: var(--muted); }
+
+.input {
+  width: 100%; padding: .55rem 0 .5rem;
+  font: inherit; font-size: 1.3rem; color: var(--ink);
+  background: transparent; border: 0; border-bottom: 1px solid var(--gold-soft); border-radius: 0;
+  transition: border-color .3s, box-shadow .3s;
+}
+.input:focus { outline: none; border-bottom-color: var(--gold-deep); box-shadow: 0 1px 0 0 var(--gold-deep); }
+.input[aria-invalid="true"] { border-bottom-color: var(--error); box-shadow: 0 1px 0 0 var(--error); }
+
+/* opções sim / não (visual de caixinha com marca) */
+.choice { display: block; }
+.choice .label { margin-bottom: .6rem; }
+.check {
+  display: inline-flex; align-items: center; gap: .7rem;
+  margin-right: 2.4rem; padding: .3rem 0; cursor: pointer;
+  user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.check__box {
+  display: grid; place-items: center; flex: none;
+  width: 1.55rem; height: 1.55rem;
+  color: transparent; background: var(--white);
+  border: 1px solid var(--gold); transition: background-color .25s, border-color .25s, color .25s, box-shadow .25s;
+}
+.check__box svg { width: 1.05rem; height: 1.05rem; stroke-dasharray: 24; stroke-dashoffset: 24; transition: stroke-dashoffset .35s ease .05s; }
+.check__text { font-size: 1.3rem; }
+.check:hover .check__box { border-color: var(--gold-deep); box-shadow: 0 0 0 3px rgba(185, 154, 97, .15); }
+.check input:checked + .check__box { background: var(--gold-deep); border-color: var(--gold-deep); color: #fff; }
+.check input:checked + .check__box svg { stroke-dashoffset: 0; }
+.check input:focus-visible + .check__box { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+.choice[data-invalid="true"] .check__box { border-color: var(--error); }
+
+.error { margin-top: .45rem; font-size: 1rem; font-style: italic; color: var(--error); }
+.error[hidden] { display: none; }
+.error--form { text-align: center; margin: 0 0 1rem; }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---------- botão + brinde ---------- */
+.submit { position: relative; display: flex; justify-content: center; margin-top: 5.6rem; }
+
+.btn {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 1.05rem 2.7rem;
+  font: inherit; font-size: 1.3rem; font-weight: 600; letter-spacing: .05em;
+  color: #fff; background: var(--gold-deep);
+  border: 1px solid var(--gold-deep); border-radius: 0; cursor: pointer;
+  box-shadow: 0 0 0 4px var(--white), 0 0 0 5px rgba(134, 105, 58, .55);
+  transition: background-color .3s, color .3s, transform .3s, box-shadow .3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover, .btn:focus-visible, .submit.is-sending .btn {
+  background: var(--white); color: var(--gold-deep); transform: translateY(-2px);
+  box-shadow: 0 0 0 4px var(--white), 0 0 0 5px var(--gold-deep), 0 14px 22px -12px rgba(95, 75, 35, .4);
+}
+.btn:focus-visible { outline: none; }
+.btn:active { transform: translateY(0); }
+.btn:disabled { cursor: progress; }
+
+.toast {
+  position: absolute; left: 50%; bottom: calc(100% + .35rem); z-index: 2;
+  width: 10rem; height: 8.6rem; translate: -50% 0;
+  pointer-events: none; color: var(--gold);
+  opacity: 0; transition: opacity .25s ease;
+}
+.btn:hover ~ .toast, .btn:focus-visible ~ .toast, .submit.is-sending .toast { opacity: 1; }
+
+.glass { position: absolute; bottom: 0; width: 2.4rem; height: 4.8rem; overflow: visible; transform-origin: 50% 100%; }
+.glass--l { left: calc(50% - 1.8rem - 1.2rem); }
+.glass--r { left: calc(50% + 1.8rem - 1.2rem); scale: -1 1; }       /* espelho do esquerdo */
+.glass__line   { fill: rgba(255, 255, 255, .85); stroke: var(--gold-deep); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.glass__liquid { fill: #ead7a3; stroke: none; }
+
+.spark { position: absolute; left: 50%; bottom: 3.75rem; width: 2rem; height: 2rem; translate: -50% 0; opacity: 0; color: var(--gold); }
+.heart { position: absolute; left: 50%; bottom: 4.9rem; width: 1.3rem; height: 1.2rem; translate: -50% 0; opacity: 0; color: #c9a45c; }
+
+.btn:hover ~ .toast .glass--l, .btn:focus-visible ~ .toast .glass--l, .is-sending .toast .glass--l { animation: clink-l 1.6s ease-in-out infinite; }
+.btn:hover ~ .toast .glass--r, .btn:focus-visible ~ .toast .glass--r, .is-sending .toast .glass--r { animation: clink-r 1.6s ease-in-out infinite; }
+.btn:hover ~ .toast .spark,    .btn:focus-visible ~ .toast .spark,    .is-sending .toast .spark    { animation: spark 1.6s ease-out infinite; }
+.btn:hover ~ .toast .heart,    .btn:focus-visible ~ .toast .heart,    .is-sending .toast .heart    { animation: heart-up 1.6s ease-out infinite; }
+
+/* as taças se aproximam, batem (40%), voltam um pouquinho e repetem */
+@keyframes clink-l { 0% { rotate: -8deg; } 40% { rotate: 18deg; } 52% { rotate: 12deg; } 100% { rotate: -8deg; } }
+@keyframes clink-r { 0% { rotate: 8deg; }  40% { rotate: -18deg; } 52% { rotate: -12deg; } 100% { rotate: 8deg; } }
+@keyframes spark   { 0%, 36% { opacity: 0; scale: .4; } 42% { opacity: 1; scale: 1; } 62%, 100% { opacity: 0; scale: 1.25; } }
+/* o coração sai do brinde e sobe, ficando acima das taças */
+@keyframes heart-up {
+  0%, 38% { opacity: 0; translate: -50% .6rem; scale: .5; }
+  48%     { opacity: 1; }
+  100%    { opacity: 0; translate: -50% -3rem; scale: 1.2; }
+}
+
+/* ---------- entrada suave ---------- */
+@keyframes fade-up { from { opacity: 0; translate: 0 .8rem; } to { opacity: 1; translate: 0 0; } }
+
+/* =========================================================
+   Tela de agradecimento: tudo branco, monograma no centro exato
+   ========================================================= */
+.thanks {
+  position: fixed; inset: 0; z-index: 50;
+  background: var(--white);
+  --mono-h: clamp(9.5rem, 30vh, 15rem);
+  animation: thanks-in .9s ease both;
+}
+.thanks[hidden] { display: none; }
+.thanks__mono {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+  height: var(--mono-h); width: auto; max-width: 80vw; object-fit: contain;
+  animation: mono-in 1.2s cubic-bezier(.2, .7, .2, 1) .15s both;
+}
+.thanks__text {
+  position: absolute; left: 0; right: 0; top: calc(50% + var(--mono-h) / 2 + 1.1rem);
+  padding: 0 1.5rem; text-align: center;
+}
+.thanks__title {
+  font-family: var(--script); font-weight: 400; font-size: clamp(2.2rem, 7vw, 3.2rem);
+  line-height: 1.25; color: var(--gold-deep);
+  animation: fade-up 1s cubic-bezier(.2, .7, .2, 1) .7s both;
+}
+.thanks__title:focus { outline: none; }
+.thanks__note {
+  margin-top: .5rem; font-style: italic; font-size: clamp(1.1rem, 2.6vw, 1.3rem); color: var(--muted);
+  animation: fade-up 1s cubic-bezier(.2, .7, .2, 1) 1.05s both;
+}
+@keyframes thanks-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mono-in { from { opacity: 0; scale: .92; } to { opacity: 1; scale: 1; } }
+
+/* ---------- telas pequenas ---------- */
+@media (max-width: 480px) {
+  body { font-size: 1.12rem; }
+  .check { margin-right: 1.8rem; }
+  .btn { width: 100%; }
+  .submit { margin-top: 5.8rem; }
+}
+@media (max-height: 640px) and (orientation: landscape) {
+  .mono { width: 7rem; }
+  .rule { margin-bottom: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

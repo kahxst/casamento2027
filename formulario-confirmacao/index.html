@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>Confirmação de presença | Kamila &amp; Ewerton</title>
+  <meta name="description" content="Confirme sua presença no casamento de Kamila e Ewerton.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23ffffff'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='%23b99a61'%3EK%26E%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="assets/monograma.webp" as="image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page" id="pagina">
+    <img class="mono" src="assets/monograma.webp" alt="Monograma de Kamila e Ewerton, com as letras K e E" width="550" height="480">
+
+    <h1 class="title">Confirmação de presença</h1>
+    <div class="rule" aria-hidden="true"></div>
+
+    <form class="form" id="form" novalidate>
+      <!-- campo escondido contra robôs: pessoas não veem nem preenchem -->
+      <div class="hp" aria-hidden="true">
+        <label>Não preencha este campo <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="field">
+        <label class="label" for="nome">Digite seu nome completo</label>
+        <input class="input" id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" spellcheck="false" required
+               aria-describedby="nome-erro">
+        <p class="error" id="nome-erro" role="alert" hidden></p>
+      </div>
+
+      <fieldset class="field choice" aria-describedby="presenca-erro">
+        <legend class="label">Você poderá comparecer ao evento?</legend>
+
+        <label class="check">
+          <input type="radio" name="presenca" value="Sim" required>
+          <span class="check__box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="check__text">Sim</span>
+        </label>
+
+        <label class="check">
+          <input type="radio" name="presenca" value="Não">
+          <span class="check__box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="check__text">Não</span>
+        </label>
+
+        <p class="error" id="presenca-erro" role="alert" hidden></p>
+      </fieldset>
+
+      <p class="error error--form" id="form-erro" role="alert" hidden></p>
+
+      <div class="submit">
+        <button class="btn" id="enviar" type="submit">
+          <span class="btn__label">Confirmar presença</span>
+        </button>
+
+        <!-- tacinhas brindando + coração subindo (aparecem ao passar o mouse) -->
+        <div class="toast" aria-hidden="true">
+          <svg class="glass glass--l" viewBox="0 0 24 48">
+            <path class="glass__liquid" d="M8.6 9.5h6.8l-.45 7.7c-.1 1.9-1.4 3.2-2.95 3.2s-2.85-1.3-2.95-3.2Z"/>
+            <path class="glass__line" d="M7.6 2h8.8l-.9 15.2c-.1 2.3-1.6 4-3.5 4s-3.4-1.700-3.500-4Z M12 21.200V41 M7.500 45.500c1.200-2.600 3-3.500 4.500-3.500s3.300.9 4.500 3.500Z"/>
+          </svg>
+          <svg class="glass glass--r" viewBox="0 0 24 48">
+            <path class="glass__liquid" d="M8.6 9.5h6.8l-.45 7.7c-.1 1.9-1.4 3.2-2.95 3.2s-2.85-1.3-2.95-3.2Z"/>
+            <path class="glass__line" d="M7.6 2h8.8l-.9 15.2c-.1 2.3-1.6 4-3.5 4s-3.4-1.700-3.500-4Z M12 21.200V41 M7.500 45.500c1.200-2.600 3-3.500 4.500-3.500s3.300.9 4.500 3.500Z"/>
+          </svg>
+          <svg class="spark" viewBox="0 0 24 24"><path d="M12 1.500v6M12 16.500v6M1.500 12h6M16.500 12h6M4.500 4.500l3.800 3.800M15.700 15.700l3.800 3.800M19.500 4.500l-3.800 3.800M8.300 15.700l-3.800 3.800" stroke="currentColor" stroke-width="1.400" stroke-linecap="round" fill="none"/></svg>
+          <svg class="heart" viewBox="0 0 24 22"><path d="M12 21 2.900 11.900A5.600 5.600 0 0 1 12 4.700a5.600 5.600 0 0 1 9.100 7.200Z" fill="currentColor"/></svg>
+        </div>
+
+      </div>
+    </form>
+  </main>
+
+  <!-- Tela de agradecimento (aparece depois do envio) -->
+  <section class="thanks" id="obrigado" aria-live="polite" hidden>
+    <img class="thanks__mono" src="assets/monograma.webp" alt="" width="550" height="480">
+    <div class="thanks__text">
+      <h2 class="thanks__title" id="obrigado-titulo" tabindex="-1">Obrigado pela confirmação</h2>
+      <p class="thanks__note">O endereço do evento será disponibilizado perto da data</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

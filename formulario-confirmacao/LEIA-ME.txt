@@ -1,0 +1,24 @@
+FORMULÁRIO DE CONFIRMAÇÃO DE PRESENÇA — KAMILA & EWERTON
+
+COMO ABRIR
+Extraia o ZIP e dê dois cliques em index.html (mantenha as pastas assets e fonts ao lado).
+
+O QUE TEM
+- Monograma centralizado e formulário abaixo (branco e dourado, mesmas fontes do site).
+- Campos: nome completo e "Você poderá comparecer ao evento?" (Sim / Não).
+- Botão "Confirmar presença": ao passar o mouse (ou focar com o teclado) duas taças brindam
+  e um coração sobe. No celular, o brinde aparece ao tocar, por um instante, antes do envio.
+- Ao enviar: tela toda branca, monograma no centro e, abaixo, "Obrigado pela confirmação" e
+  "O endereço do evento será disponibilizado perto da data".
+- Avisos se o nome estiver incompleto ou se nenhuma opção for escolhida.
+
+IMPORTANTE — ONDE FICAM AS RESPOSTAS
+Por enquanto o formulário NÃO guarda nem envia as respostas: ele só mostra o agradecimento.
+Para receber as respostas, cole o endereço de destino (Google Sheets/Apps Script, Formspree
+ou outro serviço) em FORM_ENDPOINT, no topo do script.js. Os dados enviados são:
+  { "nome": "...", "comparecera": "Sim" ou "Não", "enviadoEm": "data e hora" }
+
+PARA MEXER
+- Textos: index.html          - Cores e fontes: style.css (início, em ":root")
+- Endereço de envio e tempo do brinde: script.js (topo)
+- Trocar o monograma: assets/monograma.webp (versão com fundo branco)
