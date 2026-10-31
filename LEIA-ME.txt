@@ -42,8 +42,8 @@ CARROSSEL DE LOOKS (seção "Como se vestir?")
   recebe a passagem automática.
 
 ORDEM DAS PÁGINAS (versão 4)
-1. Capa            2. Lista de presentes
-3. Como se vestir  4. Data, contagem, local e Confirmação de presença (última, com o rodapé)
+1. Capa            2. Como se vestir
+3. Lista de presentes  4. Data, contagem, local e Confirmação de presença (última, com o rodapé)
 
 ABERTURA COM ENVELOPE
 - Aparece sempre que o site é aberto ou atualizado: o envelope surge com o selo (monograma.webp),
@@ -54,6 +54,6 @@ ABERTURA COM ENVELOPE
 
 LINKS NO script.js
     GIFT_LIST_URL -> botão "Envie seu presente"
-    RSVP_URL      -> botão "Confirme sua presença" (hoje é um endereço de exemplo)
+    RSVP_URL      -> botão "Confirme sua presença" (leva ao formulario-confirmacao/index.html)
     RESPECT_REDUCED_MOTION -> false (padrão): o envelope e as animações aparecem para todos.
                       Troque para true se quiser respeitar quem desligou animações no aparelho.

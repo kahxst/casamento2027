@@ -12,9 +12,9 @@ const CAROUSEL_INTERVAL = 2000;
 // Data e hora do casamento (horário de Brasília, UTC-3).
 const WEDDING_DATE = new Date("2027-01-30T14:00:00-03:00");
 
-// Link do botão "Confirme sua presença" (ainda é um endereço de exemplo).
-// Pode ser um formulário, um link do WhatsApp (https://wa.me/55DDDNUMERO), etc.
-const RSVP_URL = "https://SEU-LINK-DE-CONFIRMACAO-AQUI.com";
+// Para onde o botão "Confirme sua presença" leva: a página do formulário.
+// (Se um dia o formulário for para outro endereço, troque aqui.)
+const RSVP_URL = "formulario-confirmacao/index.html";
 
 // false = todo mundo vê as animações (envelope, flores, carrossel), mesmo que o computador/celular
 //         esteja com "reduzir animações" ligado. (padrão, para o convite sempre aparecer completo)
@@ -83,7 +83,10 @@ const REDUCED_MOTION = RESPECT_REDUCED_MOTION && window.matchMedia("(prefers-red
   // Espera imagens e fontes ficarem prontas para a animação não "engasgar".
   const imgs = [...root.querySelectorAll("img")].map((i) => (i.decode ? i.decode().catch(() => {}) : null));
   const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : null;
-  Promise.race([Promise.all([...imgs, fonts]), new Promise((r) => setTimeout(r, 2500))]).then(() => {
+  // também espera a imagem de fundo (a mesma escolhida pelo CSS) para ela não "aparecer de repente"
+  const bgSrc = window.matchMedia("(max-aspect-ratio: 1/1)").matches ? "assets/fundo_envelope.jpg" : "assets/fundo_envelope_wide.jpg";
+  const bg = new Promise((r) => { const i = new Image(); i.onload = i.onerror = r; i.src = bgSrc; });
+  Promise.race([Promise.all([...imgs, fonts, bg]), new Promise((r) => setTimeout(r, 2500))]).then(() => {
     if (state !== "waiting") return;
     root.classList.add("is-in");
     seal.focus({ preventScroll: true });

@@ -513,11 +513,26 @@ html.has-intro { overflow: hidden; }
 .has-intro .intro {
   position: fixed; inset: 0; z-index: 200;
   display: grid; place-items: center;
-  background: radial-gradient(ellipse at 50% 36%, #8d9c7f 0%, #6c7b5d 58%, #4a573f 100%);
+  /* fundo: tapeçaria floral (assets/fundo_envelope*.jpg) com um leve escurecido para o envelope se destacar */
+  background-color: #7a6650;
+  background-image:
+    radial-gradient(ellipse at 50% 45%, rgba(30, 22, 12, .02) 0%, rgba(30, 22, 12, .42) 100%),
+    linear-gradient(rgba(36, 28, 18, .1), rgba(36, 28, 18, .1)),
+    url("assets/fundo_envelope_wide.jpg");               /* telas deitadas (computador) */
+  background-size: cover; background-position: center; background-repeat: no-repeat;
   overflow: hidden;
   transition: opacity 1s ease .2s;
 }
-.intro::before {                      /* textura de papel */
+@media (max-aspect-ratio: 1/1) {                          /* telas em pé (celular) */
+  .has-intro .intro {
+    background-image:
+      radial-gradient(ellipse at 50% 45%, rgba(30, 22, 12, .02) 0%, rgba(30, 22, 12, .42) 100%),
+      linear-gradient(rgba(36, 28, 18, .1), rgba(36, 28, 18, .1)),
+      url("assets/fundo_envelope.jpg");
+  }
+}
+.intro::before {                      /* (desligada: a imagem de fundo já tem textura) */
+  display: none;
   content: ""; position: absolute; inset: 0; opacity: .5; mix-blend-mode: soft-light; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .5 0 0 0 0 .4 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -587,7 +602,8 @@ html.has-intro { overflow: hidden; }
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 .flap__face--out { background: linear-gradient(180deg, #f6ecd7 0%, #ebdec2 100%); }
-.flap__face--in  { background: linear-gradient(180deg, #d9ccae 0%, #e6d9bf 100%); transform: rotateX(180deg); }
+/* face de dentro: depois de virar, a ponta fica para CIMA e a base larga encosta no envelope */
+.flap__face--in  { background: linear-gradient(0deg, #d9ccae 0%, #e6d9bf 100%); transform: rotateX(180deg); clip-path: polygon(0 100%, 100% 100%, 50% 0); }
 .intro.is-open .envelope__flap { animation: flap-open .95s cubic-bezier(.45, 0, .2, 1) forwards; }
 @keyframes flap-open {
   0%   { transform: rotateX(0deg);   z-index: 5; }
