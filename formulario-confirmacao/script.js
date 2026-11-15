@@ -1,14 +1,14 @@
 /* =========================================================
-   CONFIGURAÇÃO — é só aqui que você precisa mexer
+   ENVIO DA CONFIRMAÇÃO — SUPABASE
+   O site pode ser hospedado no GitHub Pages (HTML/CSS/JS estáticos).
+   A chave publishable é própria para uso no navegador; a segurança dos
+   registros é aplicada pelas políticas RLS configuradas no Supabase.
    ========================================================= */
+const SUPABASE_URL = "https://mhchlgmmiexxkgfetidn.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_eCZJdqsq41T35Oy_ohsusA_EK2_l0zr";
+const SUPABASE_TABLE_ENDPOINT = `${SUPABASE_URL}/rest/v1/confirmacoes`;
 
-// Para onde as respostas são enviadas (endereço de um Google Sheets/Apps Script,
-// Formspree, API própria, etc.). Cole entre as aspas.
-// ATENÇÃO: enquanto estiver vazio, o formulário funciona e mostra o agradecimento,
-// mas NENHUMA resposta é enviada ou guardada.
-const FORM_ENDPOINT = "";
-
-// Tempo mínimo (ms) que o brinde fica na tela depois do clique, antes do agradecimento.
+// Tempo mínimo (ms) que o brinde fica na tela depois do clique.
 const MIN_TOAST_TIME = 1100;
 
 /* =========================================================
@@ -31,7 +31,8 @@ const MIN_TOAST_TIME = 1100;
     box.textContent = message || "";
     box.hidden = !message;
     if (invalidTarget === "input") {
-      if (message) el.setAttribute("aria-invalid", "true"); else el.removeAttribute("aria-invalid");
+      if (message) el.setAttribute("aria-invalid", "true");
+      else el.removeAttribute("aria-invalid");
     } else {
       el.dataset.invalid = message ? "true" : "false";
     }
@@ -50,21 +51,40 @@ const MIN_TOAST_TIME = 1100;
     return { nome: name, comparecera: chosen.value };
   }
 
-  // limpa o aviso assim que a pessoa corrige
   nome.addEventListener("input", () => setError(nome, nomeErro, "", "input"));
-  form.querySelectorAll('input[name="presenca"]').forEach((r) =>
-    r.addEventListener("change", () => setError(choice, presencaErro, "", "group")));
+  form.querySelectorAll('input[name="presenca"]').forEach((radio) =>
+    radio.addEventListener("change", () => setError(choice, presencaErro, "", "group"))
+  );
 
   async function send(data) {
-    if (!FORM_ENDPOINT.trim()) {
-      console.info("[Formulário] FORM_ENDPOINT está vazio: a resposta NÃO foi enviada.", data);
-      return;
-    }
-    const response = await fetch(FORM_ENDPOINT.trim(), {
+    const response = await fetch(SUPABASE_TABLE_ENDPOINT, {
       method: "POST",
-      body: JSON.stringify({ ...data, enviadoEm: new Date().toISOString() }),
+      headers: {
+        "apikey": SUPABASE_PUBLISHABLE_KEY,
+        "Authorization": `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({
+        nome: data.nome,
+        comparecera: data.comparecera
+      })
     });
-    if (!response.ok) throw new Error("Falha no envio: " + response.status);
+
+    if (!response.ok) {
+      let detail = "";
+      try {
+        const result = await response.json();
+        detail = result.message || result.details || result.hint || result.code || "";
+      } catch (_) {
+        // Mantém a mensagem genérica se a API não retornar JSON.
+      }
+      console.error("Erro do Supabase:", response.status, detail);
+      if (response.status === 401 || response.status === 403) {
+        throw new Error("Não foi possível registrar a confirmação. Verifique a configuração de acesso do formulário.");
+      }
+      throw new Error("Não foi possível salvar a confirmação. Tente novamente em alguns instantes.");
+    }
   }
 
   function showThanks() {
@@ -73,11 +93,25 @@ const MIN_TOAST_TIME = 1100;
     thanksTitle.focus({ preventScroll: true });
   }
 
+  document.getElementById("novo-participante").addEventListener("click", () => {
+    form.reset();
+    setError(nome, nomeErro, "", "input");
+    setError(choice, presencaErro, "", "group");
+    formErro.hidden = true;
+    button.disabled = false;
+    submitWrap.classList.remove("is-sending");
+    sending = false;
+    thanks.hidden = true;
+    document.body.style.overflow = "";
+    window.scrollTo(0, 0);
+    nome.focus();
+  });
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (sending) return;
 
-    // robôs preenchem o campo escondido: finge sucesso e não envia nada
+    // Honeypot: robôs que preenchem o campo invisível não geram registros.
     if (form.elements.website && form.elements.website.value) { showThanks(); return; }
 
     const data = validate();
@@ -86,14 +120,17 @@ const MIN_TOAST_TIME = 1100;
     sending = true;
     formErro.hidden = true;
     button.disabled = true;
-    submitWrap.classList.add("is-sending");        // mantém o brinde na tela durante o envio
+    submitWrap.classList.add("is-sending");
 
     try {
-      await Promise.all([send(data), new Promise((r) => setTimeout(r, MIN_TOAST_TIME))]);
+      await Promise.all([
+        send(data),
+        new Promise((resolve) => setTimeout(resolve, MIN_TOAST_TIME))
+      ]);
       showThanks();
-    } catch (err) {
-      console.error(err);
-      formErro.textContent = "Não foi possível enviar agora. Confira sua conexão e tente novamente.";
+    } catch (error) {
+      console.error(error);
+      formErro.textContent = "Não foi possível salvar sua confirmação. Tente novamente em alguns instantes. Se o problema continuar, avise a equipe do evento.";
       formErro.hidden = false;
       button.disabled = false;
       submitWrap.classList.remove("is-sending");

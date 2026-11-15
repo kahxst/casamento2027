@@ -57,3 +57,16 @@ LINKS NO script.js
     RSVP_URL      -> botão "Confirme sua presença" (leva ao formulario-confirmacao/index.html)
     RESPECT_REDUCED_MOTION -> false (padrão): o envelope e as animações aparecem para todos.
                       Troque para true se quiser respeitar quem desligou animações no aparelho.
+
+LISTA DE PRESENTES (versão 7)
+- O botão "Envie seu presente" abre lista-de-presentes/index.html (valores + PIX). Veja o LEIA-ME da pasta.
+
+
+ARMAZENAMENTO DAS CONFIRMAÇÕES DE PRESENÇA
+- O formulário fica em formulario-confirmacao/.
+- Os dados nome completo e resposta Sim/Não são enviados diretamente para a
+  tabela public.confirmacoes no Supabase; a data/hora é preenchida pelo banco.
+- A integração utiliza somente a Project URL e a Publishable key no JavaScript.
+- Compatível com GitHub Pages: não utiliza PHP, Google Apps Script ou servidor próprio.
+- Para consultar as respostas, entre no painel Supabase e abra Table Editor > confirmacoes.
+- Consulte formulario-confirmacao/LEIA-ME.txt para instruções de publicação e teste.

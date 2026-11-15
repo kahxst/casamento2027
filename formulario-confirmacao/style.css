@@ -111,8 +111,8 @@ img { display: block; max-width: 100%; height: auto; }
 
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-/* ---------- botão + brinde ---------- */
-.submit { position: relative; display: flex; justify-content: center; margin-top: 5.6rem; }
+/* ---------- botão de envio ---------- */
+.submit { position: relative; display: flex; justify-content: center; margin-top: 2rem; }
 
 .btn {
   position: relative; z-index: 1;
@@ -132,39 +132,6 @@ img { display: block; max-width: 100%; height: auto; }
 .btn:focus-visible { outline: none; }
 .btn:active { transform: translateY(0); }
 .btn:disabled { cursor: progress; }
-
-.toast {
-  position: absolute; left: 50%; bottom: calc(100% + .35rem); z-index: 2;
-  width: 10rem; height: 8.6rem; translate: -50% 0;
-  pointer-events: none; color: var(--gold);
-  opacity: 0; transition: opacity .25s ease;
-}
-.btn:hover ~ .toast, .btn:focus-visible ~ .toast, .submit.is-sending .toast { opacity: 1; }
-
-.glass { position: absolute; bottom: 0; width: 2.4rem; height: 4.8rem; overflow: visible; transform-origin: 50% 100%; }
-.glass--l { left: calc(50% - 1.8rem - 1.2rem); }
-.glass--r { left: calc(50% + 1.8rem - 1.2rem); scale: -1 1; }       /* espelho do esquerdo */
-.glass__line   { fill: rgba(255, 255, 255, .85); stroke: var(--gold-deep); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
-.glass__liquid { fill: #ead7a3; stroke: none; }
-
-.spark { position: absolute; left: 50%; bottom: 3.75rem; width: 2rem; height: 2rem; translate: -50% 0; opacity: 0; color: var(--gold); }
-.heart { position: absolute; left: 50%; bottom: 4.9rem; width: 1.3rem; height: 1.2rem; translate: -50% 0; opacity: 0; color: #c9a45c; }
-
-.btn:hover ~ .toast .glass--l, .btn:focus-visible ~ .toast .glass--l, .is-sending .toast .glass--l { animation: clink-l 1.6s ease-in-out infinite; }
-.btn:hover ~ .toast .glass--r, .btn:focus-visible ~ .toast .glass--r, .is-sending .toast .glass--r { animation: clink-r 1.6s ease-in-out infinite; }
-.btn:hover ~ .toast .spark,    .btn:focus-visible ~ .toast .spark,    .is-sending .toast .spark    { animation: spark 1.6s ease-out infinite; }
-.btn:hover ~ .toast .heart,    .btn:focus-visible ~ .toast .heart,    .is-sending .toast .heart    { animation: heart-up 1.6s ease-out infinite; }
-
-/* as taças se aproximam, batem (40%), voltam um pouquinho e repetem */
-@keyframes clink-l { 0% { rotate: -8deg; } 40% { rotate: 18deg; } 52% { rotate: 12deg; } 100% { rotate: -8deg; } }
-@keyframes clink-r { 0% { rotate: 8deg; }  40% { rotate: -18deg; } 52% { rotate: -12deg; } 100% { rotate: 8deg; } }
-@keyframes spark   { 0%, 36% { opacity: 0; scale: .4; } 42% { opacity: 1; scale: 1; } 62%, 100% { opacity: 0; scale: 1.25; } }
-/* o coração sai do brinde e sobe, ficando acima das taças */
-@keyframes heart-up {
-  0%, 38% { opacity: 0; translate: -50% .6rem; scale: .5; }
-  48%     { opacity: 1; }
-  100%    { opacity: 0; translate: -50% -3rem; scale: 1.2; }
-}
 
 /* ---------- entrada suave ---------- */
 @keyframes fade-up { from { opacity: 0; translate: 0 .8rem; } to { opacity: 1; translate: 0 0; } }
@@ -198,6 +165,20 @@ img { display: block; max-width: 100%; height: auto; }
   margin-top: .5rem; font-style: italic; font-size: clamp(1.1rem, 2.6vw, 1.3rem); color: var(--muted);
   animation: fade-up 1s cubic-bezier(.2, .7, .2, 1) 1.05s both;
 }
+.thanks__actions {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 1.25rem;
+  margin-top: 1.6rem;
+  animation: fade-up 1s cubic-bezier(.2, .7, .2, 1) 1.35s both;
+}
+.thanks__actions .btn { width: auto; min-width: 12rem; padding: .75rem 1.6rem; font-size: 1.1rem; white-space: nowrap; text-decoration: none; }
+.btn--ghost { background: var(--white); color: var(--gold-deep); }
+.btn--ghost:hover, .btn--ghost:focus-visible { background: var(--gold-deep); color: #fff; }
+@media (max-width: 480px) {
+  .thanks { --mono-h: clamp(8rem, 24vh, 15rem); overflow-y: auto; }
+  .thanks__actions { flex-direction: column; align-items: center; margin-top: 1.2rem; }
+  .thanks__actions .btn { width: 100%; max-width: 17rem; }
+}
+
 @keyframes thanks-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes mono-in { from { opacity: 0; scale: .92; } to { opacity: 1; scale: 1; } }
 
@@ -206,7 +187,7 @@ img { display: block; max-width: 100%; height: auto; }
   body { font-size: 1.12rem; }
   .check { margin-right: 1.8rem; }
   .btn { width: 100%; }
-  .submit { margin-top: 5.8rem; }
+  .submit { margin-top: 1.6rem; }
 }
 @media (max-height: 640px) and (orientation: landscape) {
   .mono { width: 7rem; }

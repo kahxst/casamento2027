@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>Envie seu presente | Kamila &amp; Ewerton</title>
+  <meta name="description" content="Envie seu presente de casamento para Kamila e Ewerton via PIX.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23ffffff'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='%23b99a61'%3EK%26E%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="assets/monograma.webp" as="image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <img class="mono" src="assets/monograma.webp" alt="Monograma de Kamila e Ewerton, com as letras K e E" width="550" height="480">
+
+    <h1 class="title">Envie seu presente</h1>
+    <div class="rule" aria-hidden="true"></div>
+
+    <!-- ============ 1) ESCOLHA DO VALOR ============ -->
+    <form class="choose" id="escolha" novalidate>
+      <fieldset class="amounts" aria-describedby="valor-erro">
+        <legend class="label">Escolha o valor do presente</legend>
+
+        <div class="grid">
+          <label class="amount">
+            <input type="radio" name="valor" value="60">
+            <span class="amount__face">
+              <span class="amount__cur">R$</span><span class="amount__num">60,00</span>
+              <svg class="amount__check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </label>
+
+          <label class="amount">
+            <input type="radio" name="valor" value="100">
+            <span class="amount__face">
+              <span class="amount__cur">R$</span><span class="amount__num">100,00</span>
+              <svg class="amount__check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </label>
+
+          <label class="amount">
+            <input type="radio" name="valor" value="150">
+            <span class="amount__face">
+              <span class="amount__cur">R$</span><span class="amount__num">150,00</span>
+              <svg class="amount__check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </label>
+
+          <label class="amount">
+            <input type="radio" name="valor" value="250">
+            <span class="amount__face">
+              <span class="amount__cur">R$</span><span class="amount__num">250,00</span>
+              <svg class="amount__check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </label>
+
+          <label class="amount amount--other">
+            <input type="radio" name="valor" value="outro">
+            <span class="amount__face">
+              <span class="amount__other">Outro<br>valor</span>
+              <svg class="amount__check" viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4.2 4.2 8.8-9.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </label>
+        </div>
+
+        <!-- aparece quando "Outro valor" é escolhido -->
+        <div class="other" id="outro-campo" hidden>
+          <label class="label" for="outro">Digite o valor (mínimo R$&nbsp;60,00)</label>
+          <div class="money">
+            <span class="money__cur" aria-hidden="true">R$</span>
+            <input class="input" id="outro" name="outro" type="text" inputmode="numeric" autocomplete="off" placeholder="0,00" aria-describedby="valor-erro">
+          </div>
+        </div>
+
+        <p class="error" id="valor-erro" role="alert" hidden></p>
+      </fieldset>
+
+      <div class="submit">
+        <button class="btn" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16v9H4zM3 7.5h18V11H3zM12 7.5V20M12 7.5C10.6 4 7 4.2 7 6.1c0 1.4 2.3 1.4 5 1.4Zm0 0c1.4-3.5 5-3.3 5-1.4 0 1.4-2.3 1.4-5 1.4Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <span>Enviar presente</span>
+        </button>
+      </div>
+
+      <a class="back" href="../index.html">Menu inicial</a>
+    </form>
+
+    <!-- ============ 2) PAGAMENTO VIA PIX ============ -->
+    <section class="pay" id="pagamento" aria-live="polite" hidden>
+      <p class="pay__label">Valor do presente</p>
+      <p class="pay__value" id="pay-valor">R$ 0,00</p>
+
+      <div class="qr" id="qr" role="img" aria-label="QR Code do PIX para pagamento"></div>
+      <p class="pay__hint">Abra o app do seu banco, escolha <strong>Pix</strong> e aponte a câmera para o código.</p>
+
+      <div class="copy">
+        <p class="pay__label">Ou use o Pix copia e cola</p>
+        <textarea class="copy__code" id="pix-codigo" readonly rows="4" aria-label="Código Pix copia e cola" spellcheck="false"></textarea>
+        <button class="btn btn--small" id="copiar" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h10v11H9zM5 15V4h10v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          <span id="copiar-texto">Copiar código</span>
+        </button>
+      </div>
+
+      <p class="pay__key">Chave Pix (celular): <strong id="pay-chave"></strong></p>
+      <p class="pay__thanks">Obrigado pelo carinho! Que Deus abençoe você.</p>
+
+      <div class="actions">
+        <button class="btn btn--outline" id="outro-valor" type="button">Escolher outro valor</button>
+        <a class="btn btn--outline" href="../index.html">Menu inicial</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="qrcode.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

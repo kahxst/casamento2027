@@ -2,9 +2,9 @@
    CONFIGURAÇÕES — é só aqui que você precisa mexer
    ========================================================= */
 
-// Link do botão "Envie seu presente". Troque o endereço entre as aspas
-// pelo link real da lista (ainda é um endereço de exemplo).
-const GIFT_LIST_URL = "https://SEU-LINK-DA-LISTA-AQUI.com";
+// Para onde o botão "Envie seu presente" leva: a página de presente com PIX.
+// (Se um dia a lista de presentes for para outro endereço, troque aqui.)
+const GIFT_LIST_URL = "lista-de-presentes/index.html";
 
 // Carrossel de looks: tempo entre uma foto e outra (em milissegundos).
 const CAROUSEL_INTERVAL = 2000;

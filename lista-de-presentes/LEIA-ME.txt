@@ -1,0 +1,26 @@
+LISTA DE PRESENTES (PIX) — KAMILA & EWERTON
+
+Página aberta pelo botão "Envie seu presente" do convite. Tudo desta página fica nesta pasta.
+
+O QUE TEM
+- Monograma, o título "Envie seu presente" e os quadradinhos:
+  R$ 60,00 | R$ 100,00 | R$ 150,00 | R$ 250,00 | Outro valor (a pessoa digita; mínimo R$ 60,00).
+- Ao clicar em "Enviar presente": aparece o QR Code do PIX e o código "Pix copia e cola" com o valor
+  escolhido, mais o botão "Copiar código", "Escolher outro valor" e "Menu inicial".
+
+SOBRE O "CÓDIGO DE BARRA"
+O PIX não usa código de barras: o padrão do Banco Central é o QR Code e o "copia e cola".
+Os dois são gerados aqui no formato oficial (BR Code), já com o valor preenchido.
+
+CONFIGURAÇÃO (topo do script.js)
+  PIX_KEY   = "+5511967236352"    sua chave Pix. Chave de CELULAR precisa do +55 na frente.
+  PIX_NAME  = "KAMILA E EWERTON"  nome que aparece no Pix (sem acento, até 25 letras)
+  PIX_CITY  = "SUZANO"            cidade (até 15 letras)
+  MIN_VALUE = 60                  valor mínimo
+
+ANTES DE DIVULGAR
+Faça um Pix de teste de R$ 60,00 e confira se o nome que o seu banco mostra para o recebedor é o
+esperado. A página não sabe se o pagamento foi feito (isso aparece no extrato do seu banco).
+Não precisa de servidor: funciona abrindo o index.html.
+
+Biblioteca de QR Code incluída (qrcode.js): qrcode-generator, de Kazuhiko Arase, licença MIT.

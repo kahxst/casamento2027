@@ -130,6 +130,9 @@ h2 {
 .btn--gift:active { transform: translateY(0); }
 .btn--gift:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 9px; }
 
+/* Botão de confirmação: proporção mais delicada, especialmente no celular */
+.btn--rsvp { padding: .72rem 1.6rem; font-size: 1.12rem; white-space: nowrap; }
+
 /* =========================================================
    PÁGINA 1 · CAPA (sempre ocupa 100% da altura da tela)
    A capa é montada em camadas (folhagem + paisagem + texto
@@ -475,7 +478,8 @@ h2 {
   .dress__art { max-width: 40rem; margin: 0 auto; width: 100%; }
   .dress__art { min-height: 0; }
   .carousel { position: relative; inset: auto; width: min(100%, 30rem); aspect-ratio: 4 / 5; max-height: 72svh; }
-  .dress__copy { max-width: 36rem; margin: 0 auto; }
+  .dress__copy { max-width: 36rem; margin: 0 auto; order: 1; }   /* texto primeiro */
+  .dress__art { order: 2; }                                       /* carrossel depois do texto */
 }
 
 @media (max-width: 640px) { .page-dots { display: none; } }
@@ -486,6 +490,7 @@ h2 {
   .when { padding-top: 8.5rem; }
   .when__foliage { width: 58vw; }
   .btn { width: 100%; max-width: 20rem; }
+  .btn--rsvp { padding: .62rem .9rem; font-size: 1.02rem; gap: .55rem; }
   .gifts__monogram { height: 5rem; }
   .gifts__lily { width: 6.5rem; bottom: .5rem; }
   .site-footer { margin-top: 2rem; padding-bottom: 1.25rem; font-size: 1rem; text-align: center; }
