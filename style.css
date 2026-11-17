@@ -412,12 +412,12 @@ h2 {
 
 .dress__copy { max-width: 34rem; }
 .dress__copy h2 { margin-bottom: .6rem; }
-.dress__code { font-size: 1.7rem; font-weight: 600; color: var(--leaf); letter-spacing: .03em; }
+.dress__code { font-size: 1.9rem; font-weight: 600; color: var(--leaf); letter-spacing: .03em; }
 .dress__copy p { margin-top: 1rem; }
 
-.dress__verse { margin: 0 0 1.4rem; padding-left: 1.2rem; border-left: 1px solid var(--gold); }
-.dress__verse p { margin: 0; font-style: italic; font-size: 1.12rem; line-height: 1.55; }
-.dress__verse footer { margin-top: .5rem; font-size: 1rem; color: var(--gold-deep); font-weight: 600; letter-spacing: .04em; }
+.dress__verse { margin: 0 0 1.4rem; padding-left: 1.2rem; border-left: 2px solid var(--gold); }
+.dress__verse p { margin: 0; font-style: italic; font-size: 1.50rem; line-height: 1.70; }
+.dress__verse footer { margin-top: .5rem; font-size: 1.5rem; color: var(--gold-deep); font-weight: 600; letter-spacing: .04em; }
 
 /* =========================================================
    PÁGINA 4 · LISTA DE PRESENTES
